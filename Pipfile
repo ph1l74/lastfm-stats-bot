@@ -9,6 +9,7 @@ verify_ssl = true
 pytelegrambotapi = "*"
 urllib3 = "*"
 pysocks = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
