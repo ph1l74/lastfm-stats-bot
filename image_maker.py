@@ -17,6 +17,7 @@ def make_report_image(stat, with_frame=False):
         offset = i * 75
         if 'http' in stat_el['image_URL']:
             cover_response = requests.get(stat_el['image_URL'])
+            print(cover_response);
             cover_img = Image.open(BytesIO(cover_response.content))
             cover_width, cover_height = cover_img.size
             if with_frame:
@@ -26,6 +27,13 @@ def make_report_image(stat, with_frame=False):
         draw.text((140, 68 + offset), u"{}".format(stat_el['artist_name']), (0, 0, 0), font=font_low)
         draw.text((450, 55 + offset), "{}".format(stat_el['play_count']), (0, 0, 0), font=font_high)
     return image_obj
+
+
+def make_report_image_bytes(stat, with_frame=False):
+    img = make_report_image(stat, with_frame=with_frame)
+    img_bytes = BytesIO()
+    img.save(img_bytes, format='PNG')
+    return img_bytes.getvalue()
 
 
 def save_image(image_obj, name):

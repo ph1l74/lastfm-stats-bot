@@ -10,6 +10,7 @@ pytelegrambotapi = "*"
 urllib3 = "*"
 pysocks = "*"
 pillow = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7"
